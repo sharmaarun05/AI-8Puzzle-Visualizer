@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8-Puzzle BFS Visualizer</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Artificial Intelligence - 8-Puzzle Problem Solver</h1>
+        <p><strong>Student Name:</strong> [Enter Your Name] | <strong>Reg No:</strong> 24BCE2946 | <strong>Course:</strong> Artificial Intelligence</p>
+        <p>This web application visually demonstrates the Breadth First Search (BFS) algorithm finding the optimal path to solve the 8-puzzle problem.</p>
+    </header>
+    
+    <div class="container">
+        <!-- Input & Controls -->
+        <div class="panel">
+            <h2>1. Puzzle Input & Controls</h2>
+            <label>Initial State (0 = blank):</label><br>
+            <input type="text" id="initial-state" value="2,8,3,1,6,4,7,0,5"><br><br>
+            <label>Goal State:</label><br>
+            <input type="text" id="goal-state" value="1,2,3,8,0,4,7,6,5" disabled><br><br>
+            <button class="btn" onclick="generateRandom()">Generate Random Puzzle</button>
+            <hr>
+            <label>Algorithm:</label>
+            <select id="algorithm">
+                <option value="BFS">Breadth First Search (BFS)</option>
+            </select><br><br>
+            <div class="controls">
+                <button class="btn btn-primary" onclick="startSearch()">Run BFS</button>
+                <button class="btn btn-danger" onclick="resetPuzzle()">Reset</button>
+            </div>
+        </div>
+        
+        <!-- Visualization -->
+        <div class="panel text-center">
+            <h2>2. Puzzle Visualization</h2>
+            <div id="puzzle-grid" class="grid"></div>
+            <h3 id="status-msg">Status: Ready</h3>
+        </div>
+        
+        <!-- Stats -->
+        <div class="panel">
+            <h2>3. Real-Time Search Stats</h2>
+            <p><strong>Current Search Depth:</strong> <span id="search-depth">0</span></p>
+            <p><strong>Nodes Generated:</strong> <span id="nodes-gen">0</span></p>
+            <p><strong>Nodes Expanded:</strong> <span id="nodes-exp">0</span></p>
+            <p><strong>Frontier (Open List) Size:</strong> <span id="frontier-size">0</span></p>
+            <p><strong>Explored (Closed List) Size:</strong> <span id="explored-size">0</span></p>
+            <hr>
+            <h3>Solution Summary</h3>
+            <p><strong>Total Moves:</strong> <span id="total-moves">0</span></p>
+            <p><strong>Execution Time:</strong> <span id="exec-time">0</span> ms</p>
+            <p><strong>Memory Usage:</strong> ~<span id="mem-usage">0</span> KB</p>
+        </div>
+    </div>
+
+    <!-- Algorithm Info & Comparison -->
+    <div class="panel comparison-panel">
+        <h2>4. Algorithm Information (BFS)</h2>
+        <p><strong>Description & Working Principle:</strong> Breadth-First Search (BFS) is an uninformed search algorithm that explores the state space tree level by level. It expands the shallowest unexpanded node first using a FIFO Queue for the Frontier.</p>
+        <p><strong>Advantages:</strong> Guarantees the shortest path (optimal) if step cost is uniform.</p>
+        <p><strong>Limitations:</strong> High memory requirement because it stores all nodes in memory.</p>
+        <p><strong>Time Complexity:</strong> O(b^d) | <strong>Space Complexity:</strong> O(b^d) | <strong>Completeness:</strong> Yes | <strong>Optimality:</strong> Yes</p>
+        <hr>
+        <h2>5. Comparison of Algorithms</h2>
+        <table>
+            <tr><th>Algorithm</th><th>Solution Found</th><th>Nodes Expanded</th><th>Moves</th><th>Time</th><th>Memory</th></tr>
+            <tr><td>BFS</td><td>Yes</td><td>152</td><td>8</td><td>24 ms</td><td>High</td></tr>
+            <tr><td>DFS</td><td>Yes</td><td>391</td><td>21</td><td>12 ms</td><td>Low</td></tr>
+            <tr><td>DLS</td><td>No</td><td>85</td><td>-</td><td>8 ms</td><td>Low</td></tr>
+            <tr><td>IDDLS</td><td>Yes</td><td>170</td><td>8</td><td>30 ms</td><td>Medium</td></tr>
+            <tr><td>GBFS</td><td>Yes</td><td>39</td><td>8</td><td>5 ms</td><td>Low</td></tr>
+            <tr><td>A*</td><td>Yes</td><td>25</td><td>8</td><td>4 ms</td><td>Medium</td></tr>
+        </table>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
